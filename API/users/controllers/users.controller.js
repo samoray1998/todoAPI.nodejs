@@ -1,9 +1,12 @@
 const userModel=require('../models/users.model')
+const crypto=require('crypto')
 
 exports.insert=async(req,res)=>{
-    console.log(req.body)
+   // console.log(req.body)
     if(req.body){
-
+        let slat=crypto.randomBytes(16).toString('base64')
+        let hash=crypto.createHmac('sha512',slat).update(req.body.password).digest('base64')
+        req.body.password=slat+'$'+hash
         return await userModel.createUser(req.body).then((result)=>{
             res.status(201).send({id:result._id})
         }).catch((err)=>{
