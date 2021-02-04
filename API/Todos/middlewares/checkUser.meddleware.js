@@ -17,7 +17,7 @@ exports.checkUserId=(req,res,next)=>{
             return res.status(500).send(
                 {
                     success:false,
-                    message:"it look's sorry something went wrong the data you just send ",
+                    message:"this user doesn't exist try to enter a valid user id ",
                     error:err
                 }
             )
