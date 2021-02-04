@@ -1,5 +1,6 @@
 const mongoose=require('../../../common/services/mogoose.services').mongoose
 const Schema=mongoose.Schema
+const env=require('../../../common/config/env.config')
 
 //email validator #regex
 let validateEmail = function (email) {
@@ -26,8 +27,13 @@ const userModelSchema=new Schema({
     },
     password:{
         type:String,
-        required:true
+        required:[true,"the password is required"]
+    },
+    permissionLevel:{
+        type:Number,
+        default:env.permissionLevel.SimpleUser
     }
+    
 })
 
 const UserModel=mongoose.model('users',userModelSchema)

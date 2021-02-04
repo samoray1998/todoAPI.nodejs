@@ -29,8 +29,8 @@ exports.insert=async(req,res)=>{
 //this function is responsible for getting users by there unique id
 
 exports.getUserById=async(req,res)=>{
-    if(req.params.id){
-        return await userModel.getUserById(req.params.id).then((result)=>{
+    if(req.params.userId){
+        return await userModel.getUserById(req.params.userId).then((result)=>{
             res.status(200).send(result)
         }).catch((err)=>{
             res.status(500).send({errors:err})
@@ -43,7 +43,7 @@ exports.getUserById=async(req,res)=>{
 exports.UpdateUser=async(req,res)=>{
     if (req.body) {
         
-        return await userModel.getUserAndUpdate(req.params.id,req.body).then((result)=>{
+        return await userModel.getUserAndUpdate(req.params.userId,req.body).then((result)=>{
             if (result) {
                 res.status(200).send({
                     success:true,
@@ -75,7 +75,7 @@ exports.UpdateUser=async(req,res)=>{
 //this function is responsible for deleting users
 exports.DeleteUser=async(req,res)=>{
     if (req.params.id) {
-        return await userModel.getUserAndDelete(req.params.id).then(()=>{
+        return await userModel.getUserAndDelete(req.params.userId).then(()=>{
             res.status(200).send({
                 success:true,
                 message:"this user is deleted successfully .."
