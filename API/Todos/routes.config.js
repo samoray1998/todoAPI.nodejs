@@ -28,6 +28,6 @@ exports.routConfig=function(app){
         todoController.DeleteTodo])
     app.get('/api/todo',[
         validationMiddleware.validJWTNeeded,
-        permissionMiddleware.minPermissionLevelRequired(ADMIN),
+        permissionMiddleware.minPermissionLevelRequired(PAID),
         todoController.getAllTodos])
 }
