@@ -9,7 +9,7 @@ exports.minPermissionLevelRequired=(required_permission_level)=>{
     return (req,res,next)=>{
         let user_permission_Level=parseInt(req.jwt.permissionLevel)
         let userId=req.jwt.userId
-      console.log('test111 '+user_permission_Level)
+     // console.log('test111 '+user_permission_Level)
 
         
         switch (required_permission_level) {
