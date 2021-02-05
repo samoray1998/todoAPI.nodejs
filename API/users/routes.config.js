@@ -18,7 +18,7 @@ exports.routeConfig=function(app){
     app.patch('/api/user/:userId',
     [
         validationMiddleware.validJWTNeeded,
-        permissionMiddleware.minPermissionLevelRequired(FREE),
+        permissionMiddleware.minPermissionLevelRequired(PAID),
         permissionMiddleware.onlySomeUserAndAdminCanDoThisAction,
         userController.UpdateUser
     ])
@@ -27,6 +27,11 @@ exports.routeConfig=function(app){
         validationMiddleware.validJWTNeeded,
         permissionMiddleware.minPermissionLevelRequired(ADMIN),
         userController.DeleteUser
+    ])
+    app.get('/api/me',[
+        validationMiddleware.validJWTNeeded,
+        permissionMiddleware.minPermissionLevelRequired(FREE),
+        userController.currentUserInfo
     ])
     app.get('/api/user',
     [

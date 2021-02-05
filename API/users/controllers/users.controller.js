@@ -1,5 +1,6 @@
 const userModel=require('../models/users.model')
 const crypto=require('crypto')
+const jwt=require('jsonwebtoken')
 
 //this function is responsible for inserting new users
 exports.insert=async(req,res)=>{
@@ -109,5 +110,13 @@ exports.getAllUsers=async(req,res)=>{
             message:"op's something went wrong while you trying to fetch user data",
             error:err
         })
+    })
+}
+
+exports.currentUserInfo=async(req,res)=>{
+    return await userModel.getUserById(req.jwt.userId).then((result)=>{
+        res.status(200).send(result)
+    }).catch((err)=>{
+        res.status(500).send({errors:err})
     })
 }

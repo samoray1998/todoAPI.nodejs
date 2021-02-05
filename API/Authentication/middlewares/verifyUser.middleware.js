@@ -32,8 +32,10 @@ exports.isPasswordAndEmailMatch=(req,res,next)=>{
                 req.body={
                     userId:result[0]._id,
                     username:result[0].username,
+                    permissionLevel:result[0].permissionLevel,
                     email:result[0].email
                 }
+                console.log(req.body.permissionLevel)
                 return next()
             }else{
                 return res.status(400).send({errors:{success:false,message:"Invalid e-mail or password "}})

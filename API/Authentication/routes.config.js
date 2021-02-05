@@ -7,7 +7,7 @@ const authValidationMiddleware=require('../../common/middleware/auth.validation.
 exports.routeConfig=function(app){
     app.post('/api/auth',[
         verifyUserMiddleware.hasAuthValidFields,
-        verifyUserMiddleware.hasAuthValidFields,
+        verifyUserMiddleware.isPasswordAndEmailMatch,
         authorizationController.LoginRequest
     ])
     app.post('/api/auth/refresh',[
