@@ -1,7 +1,7 @@
 **Todo_rest_API**
 I tried in this project to illustrate how easy it's to build a node js API
 
-To start with this project clone this project on you local machine by running this command in terminal /n
+To start with this project clone this project on you local machine by running this command in terminal .
 ```git clone https://github.com/samoray1998/todoAPI.nodejs.git ```
 
 after that go to this folder todoAPI.nodejs
